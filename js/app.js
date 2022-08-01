@@ -80,6 +80,11 @@ function clickHandler() {
     // console.log(posizioneBombe)
     if(posizioneBombe.includes(numeroCella)) {
         div.classList.toggle('morto');
+        alert("Hai perso! Il tuo punteggio è di ",  punteggio)
+        console.log(" Hai perso, il tuo punteggio", punteggio)
+    } else {
+        punteggio++
+        console.log(punteggio)
     }
     div.classList.toggle('salvo');
     // scrivo in console il numero della cella
