@@ -25,6 +25,7 @@ buttonElement.addEventListener('click', function(){
     // console.log(dimensioneGriglia)
     // RESET
     gridEl.innerHTML = ''
+
     posizioneBombe = generaBombe(dimensioneGriglia)
 
     for (let i = 0; i < dimensioneGriglia; i++) {
@@ -80,8 +81,9 @@ function clickHandler() {
     // console.log(posizioneBombe)
     if(posizioneBombe.includes(numeroCella)) {
         div.classList.toggle('morto');
-        alert("Hai perso! Il tuo punteggio è di ",  punteggio)
-        console.log(" Hai perso, il tuo punteggio", punteggio)
+        alert("Hai perso! Il tuo punteggio è di " +  punteggio)
+        gridEl.innerHTML = ''
+        punteggio = 0
     } else {
         punteggio++
         console.log(punteggio)
