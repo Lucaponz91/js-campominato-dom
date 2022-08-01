@@ -43,6 +43,23 @@ function creaCelleDiv () {
 }
 // console.log(this)
 
+function generaBombe(max){
+    // creo array (da 16 in questo caso)
+    const bombe = []
+    // ciclo per creare le bombe
+    while (bombe.length < 16)
+        // GENERO UN NUMERO CASUALE DA 1 A MAX
+        const n = numeroBombeRandom(1, max)
+        // 
+        if (!bombe.includes(n)) {
+            bombe.push(n)
+    }
+}
+function numeroBombeRandom (min, max){
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1 ) + min)
+}
 function clickHandler() {
     const div = this;
     div.classList.toggle('clicked');
