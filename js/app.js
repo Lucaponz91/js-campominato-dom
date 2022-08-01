@@ -3,6 +3,11 @@ const buttonElement = document.getElementById('genera_griglia');
 // const gridEl = document.getElementById('grid_container')
 const gridEl = document.querySelector('.grid_container')
 
+let punteggio = 0
+
+let posizioneBombe = [];
+console.log(posizioneBombe)
+
 // console.log(gridEl)
 // console.log(buttonElement)
 // IL BOTTONE AVVIERA' UN CICLO CHE GENERERA' 100 DIV
@@ -22,16 +27,23 @@ buttonElement.addEventListener('click', function(){
     // console.log(dimensioneGriglia)
     // RESET
     gridEl.innerHTML = ''
+    posizioneBombe = generaBombe(dimensioneGriglia)
+
     for (let i = 0; i < dimensioneGriglia; i++) {
     // gridEl.append(div)
     const cella = creaCelleDiv()
     // creo il contenuto del div (il numero della casella)
-    cella.innerHTML = i + 1
+    // inerisco il numero della cella nel dataset
+    cella.dataset.numero = i + 1
     // inserisco il div creato nel div "grid"
     gridEl.append(cella)
     }   
 }
 )
+
+
+
+
 function creaCelleDiv () {
     // creo il div
     const div = document.createElement('div')
@@ -47,13 +59,15 @@ function generaBombe(max){
     // creo array (da 16 in questo caso)
     const bombe = []
     // ciclo per creare le bombe
-    while (bombe.length < 16)
+    while (bombe.length < 16) {
         // GENERO UN NUMERO CASUALE DA 1 A MAX
-        const n = numeroBombeRandom(1, max)
+        let n = numeroBombeRandom (1, max)
         // 
         if (!bombe.includes(n)) {
             bombe.push(n)
+        }
     }
+    console.log(bombe)
 }
 function numeroBombeRandom (min, max){
     min = Math.ceil(min)
@@ -62,6 +76,8 @@ function numeroBombeRandom (min, max){
 }
 function clickHandler() {
     const div = this;
+    const numeroCella = parseInt(this.dataset.numero);
+    console.log(numeroCella)
     div.classList.toggle('clicked');
     // scrivo in console il numero della cella
     // console.log(div.innerHTML);
