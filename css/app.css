@@ -43,6 +43,9 @@ button{
     align-items: center;
 
 }
-.clicked{
+.salvo{
     background-color: lightblue;
+}
+.morto{
+    background-color: tomato;
 }

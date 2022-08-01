@@ -6,8 +6,6 @@ const gridEl = document.querySelector('.grid_container')
 let punteggio = 0
 
 let posizioneBombe = [];
-console.log(posizioneBombe)
-
 // console.log(gridEl)
 // console.log(buttonElement)
 // IL BOTTONE AVVIERA' UN CICLO CHE GENERERA' 100 DIV
@@ -68,6 +66,7 @@ function generaBombe(max){
         }
     }
     console.log(bombe)
+    return bombe
 }
 function numeroBombeRandom (min, max){
     min = Math.ceil(min)
@@ -77,8 +76,12 @@ function numeroBombeRandom (min, max){
 function clickHandler() {
     const div = this;
     const numeroCella = parseInt(this.dataset.numero);
-    console.log(numeroCella)
-    div.classList.toggle('clicked');
+    // console.log(numeroCella)
+    // console.log(posizioneBombe)
+    if(posizioneBombe.includes(numeroCella)) {
+        div.classList.toggle('morto');
+    }
+    div.classList.toggle('salvo');
     // scrivo in console il numero della cella
     // console.log(div.innerHTML);
 
