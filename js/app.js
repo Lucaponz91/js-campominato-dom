@@ -4,11 +4,15 @@ const buttonElement = document.getElementById('genera_griglia');
 const gridEl = document.querySelector('.grid_container')
 
 let punteggio = 0
+// let dimensioneGriglia
 
 let posizioneBombe = [];
 // console.log(gridEl)
 // console.log(buttonElement)
 // IL BOTTONE AVVIERA' UN CICLO CHE GENERERA' 100 DIV
+let diff = 0
+let punteggioMax =84
+
 buttonElement.addEventListener('click', function(){
     let diff = document.getElementById('diff').value
     // reset classe stile griglia
@@ -16,9 +20,12 @@ buttonElement.addEventListener('click', function(){
     // aggiungo la classe per lo stile css della griglia a seconda della difficoltà selezionata
     if (diff == 9){
         gridEl.classList.add('normal')
+        punteggioMax = 75
     } else if (diff == 7 ){
         gridEl.classList.add('hard')
+        punteggioMax = 33
     }
+    console.log(punteggioMax)
 
     // console.log(diff)
     let dimensioneGriglia = diff **2
@@ -39,7 +46,6 @@ buttonElement.addEventListener('click', function(){
     }   
 }
 )
-
 
 
 
@@ -66,7 +72,7 @@ function generaBombe(max){
             bombe.push(n)
         }
     }
-    console.log(bombe)
+    // console.log(bombe)
     return bombe
 }
 function numeroBombeRandom (min, max){
@@ -77,6 +83,7 @@ function numeroBombeRandom (min, max){
 function clickHandler() {
     const div = this;
     const numeroCella = parseInt(this.dataset.numero);
+    // console.log(dimensioneGriglia)
     // console.log(numeroCella)
     // console.log(posizioneBombe)
     if(posizioneBombe.includes(numeroCella)) {
@@ -87,7 +94,12 @@ function clickHandler() {
     } else {
         punteggio++
         console.log(punteggio)
+        if (punteggio == punteggioMax) { 
+            alert("HAI VINTO!")
+        }
+        console.log(punteggioMax, diff)
     }
+
     div.classList.toggle('salvo');
     // scrivo in console il numero della cella
     // console.log(div.innerHTML);
